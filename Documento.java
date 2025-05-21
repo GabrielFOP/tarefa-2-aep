@@ -1,6 +1,4 @@
-import java.util.Objects;
-
-public class Documento {
+public class Documento implements Comparable<Documento>{
     private String nome;
     private String usuario;
     private int horaSolicitacao;
@@ -40,22 +38,12 @@ public class Documento {
         return "Documento [nome: " + nome + ", usuario: " + usuario + ", horaSolicitacao: " + horaSolicitacao + "]" + "\n";
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null || getClass() != obj.getClass())
-            return false;
-        Documento outro = (Documento) obj;
-
-        return this.nome.equals(outro.nome) &&
-                this.usuario.equals(outro.usuario) &&
-                this.horaSolicitacao == outro.horaSolicitacao;
-    }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(nome, usuario, horaSolicitacao);
+    public int compareTo(Documento outroDocumento){
+        return this.nome.compareTo(outroDocumento.nome); 
     }
+
+
 
 }

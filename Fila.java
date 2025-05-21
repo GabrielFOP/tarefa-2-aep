@@ -1,11 +1,11 @@
 
-public class Fila<T extends Documento> {
+public class Fila<T extends Comparable<T>> {
     T[] dados;
     int primeiro, ultimo, ocupacao;
-    
+
     @SuppressWarnings("unchecked")
     public Fila(int capacidade) {
-        dados = (T[]) new Documento[capacidade];
+        dados = (T[]) new Comparable[capacidade];
         primeiro = 0;
         ultimo = 0;
         ocupacao = 0;
@@ -44,20 +44,20 @@ public class Fila<T extends Documento> {
         return temp;
     }
 
-    public int buscaDocumento(String nome, String usuario) {
+    public boolean buscaDocumento(String nome) {
         for (int i = primeiro, cont = 0; cont < ocupacao; cont++) {
-            T elemento = dados[i];
-            if (elemento instanceof Documento d) {
-                if (d.getNome().equals(nome) && d.getUsuario().equals(usuario)) {
-                    System.out.println("Documento encontrado na posição " + i);
-                    System.out.println("Horário de solicitação: " + d.getHoraSolicitacao());
-                    System.out.println("\n");
-                    return cont;
-                }
+            Documento d = (Documento) dados[i];
+
+            if (nome.compareTo(d.getNome()) == 0 ) {
+                System.out.println("Documento encontrado na posicao " + i);
+                System.out.println("Horario de solicitacao: " + d.getHoraSolicitacao());
+                System.out.println("\n");
+                return true;
             }
+
             i = proxima(i);
         }
-        return -1; // não encontrado
+        return false;
     }
 
     @Override

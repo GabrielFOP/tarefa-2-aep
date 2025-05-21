@@ -1,19 +1,19 @@
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
-public class TesteImpressao {
+public class TesteReimpressao {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Fila<Documento> impressora = new Fila<>(15);
+        Pilha<Documento> impressora = new Pilha();
 
         while (scanner.hasNext()) {
             int operacao = scanner.nextInt();
             scanner.nextLine();
 
             switch (operacao) {
-                case 1: // Entrada documento
+                case 1: // Solicitacao reimpressao 
 
-                    if (impressora.filaCheia()) {
+                    if (impressora.pilhaCheia()) {
                         System.out.println("Capacidade maxima da fila de impressao atingida!");
                         System.out.println("\n");
                         scanner.nextLine(); 
@@ -25,17 +25,17 @@ public class TesteImpressao {
                         int horaEntrada = scanner.nextInt();
                         scanner.nextLine();
 
-                        impressora.enfileira(new Documento(nomeDoArquivo, nomeUsuario, horaEntrada));
+                        impressora.push(new Documento(nomeDoArquivo, nomeUsuario, horaEntrada));
                     }
 
                     break;
 
-                case 2: // Imprime documento
+                case 2: // Execução de Reimpressão:
                     LocalDateTime horarioImpressao = LocalDateTime.now();
 
                     long ini = System.nanoTime();
 
-                    Documento imprimido = impressora.desenfileira();
+                    Documento imprimido = impressora.pop();
                     System.out.println("Imprimido arquivo de nome " + imprimido.getNome() + " do usuario "
                             + imprimido.getUsuario());
 
@@ -53,7 +53,7 @@ public class TesteImpressao {
                 case 3: // consulta documento
                      String nomeDoArquivo = scanner.nextLine();
 
-                     Boolean consulta = impressora.buscaDocumento(nomeDoArquivo); 
+                     Boolean consulta = impressora.buscaPilha(nomeDoArquivo); 
 
                      if(!consulta){
                         System.out.println("Documento nao encontrado na fila de impressao");
