@@ -35,7 +35,7 @@ public class Documento implements Comparable<Documento>{
 
     @Override
     public String toString() {
-        return "Documento [nome: " + nome + ", usuario: " + usuario + ", horaSolicitacao: " + horaSolicitacao + "]" + "\n";
+        return "Documento [nome: " + nome + ", usuario: " + usuario + ", horaSolicitacao: " + horaSolicitacao + "]";
     }
 
 

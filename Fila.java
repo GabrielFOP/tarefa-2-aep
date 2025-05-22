@@ -33,6 +33,11 @@ public class Fila<T extends Comparable<T>> {
         dados[ultimo] = e;
         ultimo = proxima(ultimo);
         ocupacao++;
+       
+        if (e instanceof Documento d) {
+            System.out.println("Inserindo o " + d + " a pilha de reimpressao");
+            System.out.println();
+        }
     }
 
     public T desenfileira() {
@@ -54,6 +59,7 @@ public class Fila<T extends Comparable<T>> {
                 System.out.println("Documento encontrado na posicao " + i);
                 if (elemento instanceof Documento d) {
                     System.out.println("Horario de solicitacao: " + d.getHoraSolicitacao());
+                    System.out.println();
                 }
                 System.out.println();
                 return true;
@@ -70,7 +76,7 @@ public class Fila<T extends Comparable<T>> {
             return ("fila vazia");
         String s = "";
         for (int i = primeiro, cont = 0; cont < ocupacao; cont++) {
-            s = s + dados[i] + " ";
+            s = s + dados[i] + "\n";
             i = proxima(i);
         }
         return s;

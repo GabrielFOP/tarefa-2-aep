@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Pilha<T extends Comparable<T>> {
     private int topo;
     private T[] dados;
@@ -27,6 +29,12 @@ public class Pilha<T extends Comparable<T>> {
             return false;
         }
         dados[topo++] = elemento;
+        
+        if(elemento instanceof Documento d){
+            System.out.println("Inserindo o " + d + " a pilha de reimpressao");
+            System.out.println();
+        }
+        
         return true;
 
     }
@@ -62,4 +70,16 @@ public class Pilha<T extends Comparable<T>> {
 
         return false;
     }
+
+    @Override
+    public String toString() {
+        String s = "-----------\n";
+        if (pilhaVazia()) 
+          s += "esta vazia\n";
+        else 
+          for (int i = topo-1; i >= 0; i--) {
+            s += dados[i] + "\n";
+          }
+        return s + "-----------\n";
+      }
 }
