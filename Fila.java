@@ -45,13 +45,17 @@ public class Fila<T extends Comparable<T>> {
     }
 
     public boolean buscaDocumento(String nome) {
-        for (int i = primeiro, cont = 0; cont < ocupacao; cont++) {
-            Documento d = (Documento) dados[i];
+        Documento docBusca = new Documento(nome, "", 0);
 
-            if (nome.compareTo(d.getNome()) == 0 ) {
+        for (int i = primeiro, cont = 0; cont < ocupacao; cont++) {
+            T elemento = dados[i];
+
+            if (elemento.compareTo((T) docBusca) == 0) {
                 System.out.println("Documento encontrado na posicao " + i);
-                System.out.println("Horario de solicitacao: " + d.getHoraSolicitacao());
-                System.out.println("\n");
+                if (elemento instanceof Documento d) {
+                    System.out.println("Horario de solicitacao: " + d.getHoraSolicitacao());
+                }
+                System.out.println();
                 return true;
             }
 
