@@ -15,7 +15,7 @@ public class TesteReimpressao {
             switch (operacao) {
                 case 1: // Solicitação de reimpressão
                     if (pilha.pilhaCheia()) {
-                        System.out.println("Capacidade maxima da fila de impressao atingida!");
+                        System.out.println("Capacidade maxima da pilha de reimpressao atingida!");
                         System.out.println();
                         scanner.nextLine();
                         scanner.nextLine();
@@ -54,7 +54,7 @@ public class TesteReimpressao {
                         String nomeDoArquivoConsulta = scanner.nextLine();
                         boolean encontrado = pilha.buscaPilha(nomeDoArquivoConsulta);
                         if (!encontrado) {
-                            System.out.println("Documento nao encontrado na fila de impressao");
+                            System.out.println("Documento nao encontrado na pilha de reimpressao");
                             System.out.println();
                         }
                     }

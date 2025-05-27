@@ -35,7 +35,7 @@ public class Fila<T extends Comparable<T>> {
         ocupacao++;
        
         if (e instanceof Documento d) {
-            System.out.println("Inserindo o " + d + " a pilha de reimpressao");
+            System.out.println("Inserindo o " + d + " a fila de impressao");
             System.out.println();
         }
     }
